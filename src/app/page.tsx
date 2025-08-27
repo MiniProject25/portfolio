@@ -5,11 +5,9 @@ import { useState } from "react";
 // custom imports
 import Typewriter from "typewriter-effect"
 import Button from "@/components/homepage/ContactMe";
-import css from "styled-jsx/css";
-import { styleText } from "util";
 
 export default function Home() {
-  let [showMain, setShowMain] = useState(false);
+  const [showMain, setShowMain] = useState(false);
 
   const logos = {
     node: "https://krishnasworld.netlify.app/Icons/node.svg",
@@ -170,7 +168,7 @@ export default function Home() {
                       {
                         projects.map((project, index) => {
                           return (
-                            <div className="flex border-2 w-160 h-30 m-2 rounded-xl">
+                            <div key={index} className="flex border-2 w-160 h-30 m-2 rounded-xl">
                               <ul className="flex flex-col m-2 gap-y-2">
                                 <li className="">
                                   {index + 1}. {project.title}
@@ -178,8 +176,8 @@ export default function Home() {
                                 <li>
                                   <p className="flex gap-2">
                                     Tech Stack:
-                                    {project.tools.map((tech) => {
-                                      return <img src={tech} className="h-8.5" alt="" />
+                                    {project.tools.map((tech, index) => {
+                                      return <img key={index} src={tech} className="h-8.5" alt="" />
                                     })
                                     }
                                   </p>
